@@ -17,17 +17,12 @@
      ```bash
      $ npm i
 
-4. Crie o Servidor
-   * Crie o servidor usando o codigo:
-     ```bash
-     $ npm init -y
-
-5. Inicie o Servidor
+4. Inicie o Servidor
    * Inicie o servidor usando o codigo:
      ```bash
      $ npm run dev
 
-6. Para executar as rotas utilize o Insomnia ou um programa similiar
+5. Para executar as rotas utilize o Insomnia ou um programa similiar
    * Baixe e instale o Insomnia acessando o link: https://insomnia.rest/download
    * Crie uma conta e se conecte no aplicativo
       
