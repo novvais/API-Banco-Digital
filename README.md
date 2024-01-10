@@ -34,7 +34,7 @@
 2. Clique na primeira opção
    <div><img src="./assets/foto_2.png"><div>
 
-3. Dê um nome para o projeto
+3. Dê um nome para o coleção
    <div><img src="./assets/foto_3.png"><div>
 
 4. Clique no ícone de + para criar uma rota
