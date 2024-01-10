@@ -2,23 +2,23 @@
 
 ## Como Usar
 
-1. Clone o Repositorio
+1. Clone o Repositório
    * Clone este repositório para o seu computador usando o seguinte comando:
      ```bash
      $ git clone git@github.com:novvais/API-Banco-Digital.git
 
 2. Encontre o Diretorio
-   * Encontre o diretorio usando o codigo abaixo:
+   * Encontre o diretorio usando o código abaixo:
      ```bash
      $ cd API-Banco-Digital
      
 3. Baixe todas as Dependecias do Projeto
-   * No terminal utilize o codigo abaixo para baixar todas a bibliotecas:
+   * No terminal utilize o código abaixo para baixar todas as bibliotecas:
      ```bash
      $ npm i
 
 4. Inicie o Servidor
-   * Inicie o servidor usando o codigo:
+   * Inicie o servidor usando o código:
      ```bash
      $ npm run dev
 
@@ -28,8 +28,8 @@
       
 ## Como Usar o Insomnia
 
-1. Na página incial do Insomnia, clique no icone de + no canto superior direito
-   <img src="./assets/foto_1.png">
+1. Na página incial do Insomnia, clique no ícone de + no canto superior direito
+   <div><img src="./assets/foto_1.png"><div>
 
 2. Clique na primeira opção
    <img src="./assets/foto_2.png">
@@ -37,17 +37,26 @@
 3. Dê um nome para o projeto
    <img src="./assets/foto_3.png">
 
-4. Clique no icone de + para criar uma rota
+4. Clique no ícone de + para criar uma rota
    <img src="./assets/foto_4.png"> 
 
 5. Clique na primeira opção
    <img src="./assets/foto_5.png">
 
 6. Escolha o verbo da rota
-   * Adicione o dominio e o caminho da API
+   * Adicione o domínio e o caminho da API
      ```bash
      http://localhost:3000
    <img src="./assets/foto_6.png">
+
+7. Para testar a rota "listarConta" necessita adicionar a senha do banco do usuario
+   <img src="./assets/foto_8.png">
+
+8. Para testar as rotas "consultaDoSaldo" e "extrato" necessita adicionar o número da conta e senha do banco
+   <img src="./assets/foto_7.png">
    
-7. Exemplo de 
+#### Exemplo de conteúdo do Body Request
    <img src="./assets/exemplo_json.png">
+
+#### Exemplo de saída 
+   <img src="./assets/exemplo_res.png">

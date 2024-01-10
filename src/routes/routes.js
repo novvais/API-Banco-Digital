@@ -1,17 +1,18 @@
 const express = require("express")
-const banco = require("../controllers/banco")
+const conta = require("../controllers/conta")
+const tranacoes = require("../controllers/transacoes")
 const { password, password2 } = require("../middleware/middleware")
 
 const route = express()
 
-route.get("/contas", password, banco.listagemContas)
-route.post("/contas", banco.adicionandoConta)
-route.put("/contas/:numeroConta/usuario", banco.atualizarConta)
-route.delete("/contas/:numeroConta", banco.excluirConta)
-route.post("/transacoes/depositar", banco.deposito)
-route.post("/transacoes/sacar", banco.saque)
-route.post("/transacoes/transferir", banco.transferir)
-route.get("/contas/saldo", password2, banco.consultaDoSaldo)
-route.get("/contas/extrato", password2, banco.extrato)
+route.get("/contas", password, conta.listarConta)
+route.post("/contas", conta.adicionandoConta)
+route.put("/contas/:numeroConta/usuario", conta.atualizarConta)
+route.delete("/contas/:numeroConta", conta.excluirConta)
+route.post("/transacoes/depositar", tranacoes.deposito)
+route.post("/transacoes/sacar", tranacoes.saque)
+route.post("/transacoes/transferir", tranacoes.transferir)
+route.get("/contas/saldo", password2, tranacoes.consultaDoSaldo)
+route.get("/contas/extrato", password2, tranacoes.extrato)
 
 module.exports = route
