@@ -29,18 +29,25 @@
 ## Como Usar o Insomnia
 
 1. Na página incial do Insomnia, clique no icone de + no canto superior direito
-   *
+   <img src="./assets/foto_1.png">
 
 2. Clique na primeira opção
-   *
+   <img src="./assets/foto_2.png">
 
 3. Dê um nome para o projeto
-   *
+   <img src="./assets/foto_3.png">
 
 4. Clique no icone de + para criar uma rota
-   *
+   <img src="./assets/foto_4.png"> 
 
 5. Clique na primeira opção
-   *
+   <img src="./assets/foto_5.png">
 
-6.
+6. Escolha o verbo da rota
+   * Adicione o dominio e o caminho da API
+     ```bash
+     http://localhost:3000
+   <img src="./assets/foto_6.png">
+   
+7. Exemplo de 
+   <img src="./assets/exemplo_json.png">
