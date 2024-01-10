@@ -32,28 +32,28 @@
    <div><img src="./assets/foto_1.png"><div>
 
 2. Clique na primeira opção
-   <img src="./assets/foto_2.png">
+   <div><img src="./assets/foto_2.png"><div>
 
 3. Dê um nome para o projeto
-   <img src="./assets/foto_3.png">
+   <div><img src="./assets/foto_3.png"><div>
 
 4. Clique no ícone de + para criar uma rota
-   <img src="./assets/foto_4.png"> 
+   <div><img src="./assets/foto_4.png"><div> 
 
 5. Clique na primeira opção
-   <img src="./assets/foto_5.png">
+   <div><img src="./assets/foto_5.png"><div>
 
 6. Escolha o verbo da rota
    * Adicione o domínio e o caminho da API
      ```bash
      http://localhost:3000
-   <img src="./assets/foto_6.png">
+   <div><img src="./assets/foto_6.png"><div>
 
 7. Para testar a rota "listarConta" necessita adicionar a senha do banco do usuario
-   <img src="./assets/foto_8.png">
+   <div><img src="./assets/foto_8.png"><div>
 
 8. Para testar as rotas "consultaDoSaldo" e "extrato" necessita adicionar o número da conta e senha do banco
-   <img src="./assets/foto_7.png">
+   <div><img src="./assets/foto_7.png"><div>
    
 #### Exemplo de conteúdo do Body Request
    <img src="./assets/exemplo_json.png">
