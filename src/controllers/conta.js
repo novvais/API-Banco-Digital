@@ -5,7 +5,7 @@ const { format } = require("date-fns");
 
 let contador = 1;
 
-const listarConta = (req, res) => {
+const listarContas = (req, res) => {
   return res.status(200).json(contas.first());
 };
 
@@ -41,7 +41,7 @@ const adicionandoConta = (req, res) => {
 
 const atualizarConta = (req, res) => {
   const { numeroConta } = req.params;
-  const { nome, cpf, data_nascimento, telefone, email, senha } = req.body;
+  const { nome, cpf, data_nascimento, telefone, email } = req.body;
 
   let conta = contas.find((conta) => {
     return conta.numero === Number(numeroConta);
@@ -107,7 +107,7 @@ const excluirConta = (req, res) => {
 };
 
 module.exports = {
-  listarConta,
+  listarContas,
   adicionandoConta,
   atualizarConta,
   excluirConta

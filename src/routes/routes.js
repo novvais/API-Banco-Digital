@@ -5,7 +5,7 @@ const { password, password2 } = require("../middleware/middleware")
 
 const route = express()
 
-route.get("/contas", password, conta.listarConta)
+route.get("/contas", password, conta.listarContas)
 route.post("/contas", conta.adicionandoConta)
 route.put("/contas/:numeroConta/usuario", conta.atualizarConta)
 route.delete("/contas/:numeroConta", conta.excluirConta)
