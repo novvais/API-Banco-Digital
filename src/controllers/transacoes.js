@@ -3,8 +3,8 @@ let {
     saques,
     depositos,
     transferencias
-  } = require("../database/bancodedados");
-  const { format } = require("date-fns");
+} = require("../database/bancodedados");
+const { format } = require("date-fns");
 
 const deposito = (req, res) => {
   const { numero_conta, valor } = req.body;
@@ -46,9 +46,7 @@ const saque = (req, res) => {
   });
 
   if (!conta) {
-    return res
-      .status(404)
-      .json({ mensagem: "Por favor Insira um Numero de Conta valido" });
+    return res.status(404).json({ mensagem: "Por favor Insira um Numero de Conta valido" });
   }
 
   if (valor > conta.saldo) {
@@ -80,9 +78,7 @@ const transferir = (req, res) => {
   });
 
   if (!conta_origem) {
-    return res
-      .status(404)
-      .json({ mensagem: "Por favor informe um numero de conta valido" });
+    return res.status(404).json({ mensagem: "Por favor informe um numero de conta valido" });
   }
 
   const conta_destino = contas.find((contaDestino) => {
