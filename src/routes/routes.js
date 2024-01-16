@@ -1,18 +1,23 @@
 const express = require("express")
-const conta = require("../controllers/conta")
-const tranacoes = require("../controllers/transacoes")
+const conta = require("../controllers/accounts")
+const tranacoes = require("../controllers/transactions")
 const { password, password2 } = require("../middleware/middleware")
 
 const route = express()
 
-route.get("/contas", password, conta.listarContas)
-route.post("/contas", conta.adicionandoConta)
-route.put("/contas/:numeroConta/usuario", conta.atualizarConta)
-route.delete("/contas/:numeroConta", conta.excluirConta)
-route.post("/transacoes/depositar", tranacoes.deposito)
-route.post("/transacoes/sacar", tranacoes.saque)
-route.post("/transacoes/transferir", tranacoes.transferir)
-route.get("/contas/saldo", password2, tranacoes.consultaDoSaldo)
-route.get("/contas/extrato", password2, tranacoes.extrato)
+route.get("/", (res) => { 
+    return res.status(200).json({ message: "Hello World!"})
+})
+
+route.get("/contas", password, conta.listAccounts)
+route.post("/contas", conta.addAccount)
+route.put("/contas/:numeroConta/usuario", conta.updateAccount)
+route.delete("/contas/:numeroConta", conta.deleteAccount)
+
+route.post("/transacoes/depositar", tranacoes.deposit)
+route.post("/transacoes/sacar", tranacoes.withdrawal)
+route.post("/transacoes/transferir", tranacoes.transfer)
+route.get("/contas/saldo", password2, tranacoes.queryBalance)
+route.get("/contas/extrato", password2, tranacoes.extract)
 
 module.exports = route
