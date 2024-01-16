@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "revisao-m04",
+    "name": "api-digital-bank",
     "builds": [
        { "src": "src/index.js", "use": "@vercel/node" }
     ],
