@@ -10,90 +10,90 @@ const listAccounts = (req, res) => {
 const addAccount = (req, res) => {
   const { nome, cpf, data_nascimento, telefone, email, senha } = req.body;
 
-  const verificacaoCPF = db.contas.find((conta) => {
-    return conta.usuario.cpf === cpf;
+  const verificationCPF = db.contas.find((account) => {
+    return account.usuario.cpf === cpf;
   });
 
-  if (verificacaoCPF) {
-    return res.status(400).json({ mensagem: "CPF ja cadastrado." });
+  if (verificationCPF) {
+    return res.status(400).json({ message: "CPF already registered." });
   }
 
-  const verificacaoEmail = db.contas.find((conta) => {
-    return conta.usuario.email === email;
+  const verificationEmail = db.contas.find((account) => {
+    return account.usuario.email === email;
   });
 
-  if (verificacaoEmail) {
-    return res.status(400).json({ mensagem: "Email ja cadastrado." });
+  if (verificationEmail) {
+    return res.status(400).json({ message: "Email already registered." });
   }
 
-  const dados = {
+  const data = {
     numero: counter++,
     saldo: 0,
     usuario: req.body,
   };
 
-  db.contas.push(dados);
+  db.contas.push(data);
 
-  return res.status(201).json(dados);
+  return res.status(201).json(data);
 };
 
 const updateAccount = (req, res) => {
   const { numeroConta } = req.params;
   const { nome, cpf, data_nascimento, telefone, email } = req.body;
 
-  let conta = db.contas.find((conta) => {
-    return conta.numero === Number(numeroConta);
+  let account = db.contas.find((account) => {
+    return account.numero === Number(numeroConta);
   });
 
-  if (!conta) {
-    return res.status(404).json({ mensagem: "Informe um Numero de Conta valido." });
+  if (!account) {
+    return res.status(404).json({ message: "Enter a valid Account Number." });
   }
 
   if (!nome && !cpf && !data_nascimento && !telefone && !email) {
-    return res.status(400).json({ mensagem: "Informe pelo menos uma propriedade." });
+    return res.status(400).json({ message: "Enter at least one property." });
   }
 
-  const verificacaoCPF = db.contas.find((conta) => {
-    return conta.usuario.cpf === cpf;
+  const verificationCPF = db.contas.find((account) => {
+    return account.usuario.cpf === cpf;
   });
 
-  if (verificacaoCPF) {
-    return res.status(400).json({ mensagem: "CPF ja cadastrado." });
+  if (verificationCPF) {
+    return res.status(400).json({ message: "CPF ja cadastrado." });
   }
 
-  const verificacaoEmail = db.contas.find((conta) => {
-    return conta.usuario.email === email;
+  const verificationEmail = db.contas.find((account) => {
+    return account.usuario.email === email;
   });
 
-  if (verificacaoEmail) {
-    return res.status(400).json({ mensagem: "Email ja cadastrado." });
+  if (verificationEmail) {
+    return res.status(400).json({ message: "Email already registered." });
   }
 
-  conta.usuario = req.body;
+  account.usuario = req.body;
 
-  return res.status(201).json({ mensagem: "Atualizacao concluida com sucesso." });
+  return res.status(201).json({ message: "Update completed successfully." });
 };
 
 const deleteAccount = (req, res) => {
   const { numeroConta } = req.params;
 
   if (!numeroConta) {
-    return res.status(400).json({ mensagem: "Por favor informe um Numero de Conta valido." });
+    return res.status(400).json({ message: "Please enter a valid Account Number." });
   }
 
-  const conta = db.contas.find((conta) => {
-    return conta.numero === Number(numeroConta);
+  const account = db.contas.find((account) => {
+    return account.numero === Number(numeroConta);
   });
 
-  if (!conta) {
-    return res.status(404).json({ mensagem: "Usuario nao encontrado." });
+  if (!account) {
+    return res.status(404).json({ message: "User not found." });
   }
 
   db.contas = db.contas.filter((deleteAccount) => {
     return deleteAccount.numero !== Number(numeroConta);
   });
   
-  return res.status(201).json({ mensagem: "Conta deletada com sucesso." });
+  return res.status(201).json({ message: "Account successfully deleted." });
 };
 
 module.exports = {

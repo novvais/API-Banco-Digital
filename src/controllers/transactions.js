@@ -9,11 +9,11 @@ const deposit = (req, res) => {
   });
   
   if (!account) {
-    return res.status(404).json({ mensagem: "Please Enter a Valid Account Number" });
+    return res.status(404).json({ message: "Please Enter a Valid Account Number" });
   }
 
   if (valor <= 0) {
-    return res.status(400).json({mensagem: "Insert a value that is positive and above 0."});
+    return res.status(400).json({message: "Insert a value that is positive and above 0."});
   }
 
   account.saldo += valor;
@@ -26,7 +26,7 @@ const deposit = (req, res) => {
 
   db.depositos.push(data);
 
-  return res.status(201).json({ mensagem: "Successful deposit." });
+  return res.status(201).json({ message: "Successful deposit." });
 };
 
 const withdrawal = (req, res) => {
@@ -37,15 +37,15 @@ const withdrawal = (req, res) => {
   });
 
   if (!account) {
-    return res.status(404).json({ mensagem: "Please Enter a Valid Account Number." });
+    return res.status(404).json({ message: "Please Enter a Valid Account Number." });
   }
 
   if (valor > account.saldo) {
-    return res.status(400).json({ mensagem: "Insufficient balance." });
+    return res.status(400).json({ message: "Insufficient balance." });
   }
 
   if (senha !== 123) {
-    return res.status(400).json({ mensagem: "Incorrect password." });
+    return res.status(400).json({ message: "Incorrect password." });
   }
 
   account.saldo -= valor;
@@ -58,38 +58,38 @@ const withdrawal = (req, res) => {
 
   db.saques.push(data);
 
-  return res.status(201).json({ mensagem: "Withdrawal successful." });
+  return res.status(201).json({ message: "Withdrawal successful." });
 };
 
 const transfer = (req, res) => {
   const { numero_conta_origem, numero_conta_destino, valor, senha } = req.body;
 
-  const conta_origem = db.contas.find((contaOrigem) => {
-    return contaOrigem.numero === Number(numero_conta_origem);
+  const source_account = db.contas.find((accountSource) => {
+    return accountSource.numero === Number(numero_conta_origem);
   });
 
-  if (!conta_origem) {
-    return res.status(404).json({ mensagem: "Please Enter a Valid Account Number" });
+  if (!source_account) {
+    return res.status(404).json({ message: "Please Enter a Valid Account Number" });
   }
 
-  const conta_destino = db.contas.find((contaDestino) => {
-    return contaDestino.numero === Number(numero_conta_origem);
+  const destination_account = db.contas.find((accountDestination) => {
+    return accountDestination.numero === Number(numero_conta_origem);
   });
 
-  if (!conta_destino) {
-    return res.status(404).json({ mensagem: "Please Enter a Valid Account Number" });
+  if (!destination_account) {
+    return res.status(404).json({ message: "Please Enter a Valid Account Number" });
   }
 
-  if (valor > conta_origem.valor) {
-    return res.status(400).json({ mensagem: "Insufficient balance." });
+  if (valor > source_account.valor) {
+    return res.status(400).json({ message: "Insufficient balance." });
   }
 
   if (senha !== "123") {
-    return res.status(400).json({ mensagem: "Incorrect password." });
+    return res.status(400).json({ message: "Incorrect password." });
   }
 
-  conta_origem.saldo -= valor;
-  conta_destino.saldo += valor;
+  source_account.saldo -= valor;
+  destination_account.saldo += valor;
 
   const data = {
     data: format(new Date(), "MM/dd/yyyy"),
@@ -100,7 +100,7 @@ const transfer = (req, res) => {
 
   db.transferencias.push(data);
 
-  return res.status(201).json({ mensagem: "Transfer successful" });
+  return res.status(201).json({ message: "Transfer successful" });
 };
 
 const queryBalance = (req, res) => {
@@ -111,7 +111,7 @@ const queryBalance = (req, res) => {
   });
 
   if (!account) {
-    return res.status(404).json({ mensagem: "Enter a valid Account Number." });
+    return res.status(404).json({ message: "Enter a valid Account Number." });
   }
 
   return res.status(200).json(`saldo: ${account.saldo}`);
@@ -125,7 +125,7 @@ const extract = (req, res) => {
   });
 
   if (!account) {
-    return res.status(404).json({ mensagem: "Enter a valid Account Number." });
+    return res.status(404).json({ message: "Enter a valid Account Number." });
   }
 
   const withdrawalAccount = db.saques.filter((withdrawal) => {
@@ -136,12 +136,12 @@ const extract = (req, res) => {
     return deposit.numero_conta === numero_conta;
   });
 
-  const transfersSent = db.transferencias.filter((enviadas) => {
-    return enviadas.numero_conta_origem === numero_conta;
+  const transfersSent = db.transferencias.filter((sent) => {
+    return sent.numero_conta_origem === numero_conta;
   });
 
-  const transfersReceived = db.transferencias.filter((recebidas) => {
-    return recebidas.numero_conta_destino === numero_conta;
+  const transfersReceived = db.transferencias.filter((received) => {
+    return received.numero_conta_destino === numero_conta;
   });
 
   const data = {
