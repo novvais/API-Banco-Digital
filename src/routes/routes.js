@@ -5,7 +5,7 @@ const { password, password2 } = require("../middleware/middleware")
 
 const route = express()
 
-route.get("/", (req, res) => { 
+route.get("/", (res) => { 
     return res.status(200).json({ message: "Hello World!"})
 })
 
